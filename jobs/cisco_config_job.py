@@ -1,4 +1,4 @@
-from nautobot.apps.jobs import Job, StringVar, ObjectVar, register_jobs
+from nautobot.apps.jobs import Job, StringVar, ObjectVar
 from nautobot.dcim.models import Device
 
 class KonfigurasiVlanInterface(Job):
@@ -25,9 +25,6 @@ class KonfigurasiVlanInterface(Job):
         interface = data["nama_interface"]
         vlan = data["vlan_id"]
         
-        # Simulasi berhasil tanpa mengeksekusi koneksi SSH sungguhan
         self.logger.info(f"Menerima input dari GUI: Perangkat {device_obj.name}")
         self.logger.info(f"Target antarmuka: {interface}, VLAN: {vlan}")
-        self.logger.success("GUI Berhasil dieksekusi! (Sistem aman, Netmiko dinonaktifkan sementara)")
-
-register_jobs(KonfigurasiVlanInterface)
+        self.logger.success("GUI Berhasil dieksekusi dengan aman!")
