@@ -1,4 +1,4 @@
-from nautobot.apps.jobs import Job, StringVar, ObjectVar
+from nautobot.apps.jobs import Job, StringVar, ObjectVar, register_jobs
 from nautobot.dcim.models import Device
 from netmiko import ConnectHandler
 
@@ -81,3 +81,6 @@ class KonfigurasiVlanInterface(Job):
         except Exception as e:
             # Jika ada error (misal salah password/gagal SSH), log error akan muncul di GUI
             self.logger.error(f"Gagal melakukan konfigurasi ke perangkat: {str(e)}")
+
+# --- Bagian 3: Registrasi Job untuk Nautobot v2 ---
+register_jobs(KonfigurasiVlanInterface)
