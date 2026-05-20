@@ -19,6 +19,7 @@ class KonfigurasiVlanInterface(Job):
         name = "Form Konfigurasi VLAN Port Cisco"
         description = "Uji coba GUI Form (Safe Mode)."
         has_sensitive_variables = False
+        job_class_type = "report"
 
     def run(self, data, commit):
         device_obj = data["perangkat"]
